@@ -1,0 +1,48 @@
+# Data directory
+data/
+*.xlsx
+*.csv
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Models and outputs
+*.keras
+*.h5
+*.hdf5
+outputs/
+figures/
+models/
