@@ -1,0 +1,38 @@
+C组模型实验结果回答
+
+1. 实验组：CNN-BiLSTM 最终交付模型
+使用特征：混合指标体系（行情指标 + 技术指标 + 情绪指标，合计 25 维）
+数值预测拟合度 (1-MAPE)：95.11%
+RMSE：33.177478
+MAE：15.534739
+
+2. 对照组A：纯单向 LSTM 模型
+数值预测拟合度 (1-MAPE)：94.64%
+RMSE：35.450415
+MAE：16.880528
+
+3. 对照组B：不含情绪特征的 CNN-BiLSTM（行情指标 + 技术指标）
+数值预测拟合度 (1-MAPE)：94.86%
+RMSE：36.252843
+MAE：16.611681
+
+4. 模型超参数
+window = 5
+features = 25
+kernel_size = 5
+lstm_units = 64
+epochs = 80，由 EarlyStopping 控制最佳轮数
+batch_size = 32
+dropout = 0.01
+optimizer = Adam
+
+5. 最终融合说明
+模型直接预测 future_return_5，并使用 1 - MAPE 作为回归数值预测拟合度衡量指标。
+
+
+6. 已输出图表
+- loss_cnn_bilstm_final.png：最终交付模型训练损失曲线。
+- loss_lstm_baseline.png：纯单向 LSTM 对照组训练损失曲线。
+- loss_no_sentiment.png：不含情绪特征对照组训练损失曲线。
+- pred_vs_actual_cnn_bilstm.png：测试集预测股价 vs 实际股价对比图。
+- model_comparison.png：主要模型性能对比图（包含 1-MAPE 与 MAPE）。

@@ -1,0 +1,4 @@
+﻿model_name,window_size,horizon,feature_dim,batch_size,epochs,best_epoch,lstm_units,dropout,learning_rate,filters,kernel_size,conv_layers,padding,loss_name
+lstm_baseline,5,5,25,32,60,7,32,0.2,0.001,,,,,
+cnn_bilstm_no_sentiment,5,5,21,32,60,1,32,0.2,0.001,32.0,3.0,1.0,same,mse
+cnn_bilstm_final,5,5,25,32,60,2,64,0.2,0.001,32.0,5.0,1.0,same,mse

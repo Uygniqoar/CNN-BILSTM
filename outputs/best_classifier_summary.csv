@@ -1,0 +1,2 @@
+﻿model_name,filters,kernel_size,conv_layers,padding,lstm_units,dropout,learning_rate,batch_size,class_weight,best_threshold,val_accuracy,val_balanced_accuracy,val_precision,val_recall,val_f1,test_accuracy,test_balanced_accuracy,test_precision,test_recall,test_f1
+cnn_bilstm_classifier_best,128,2,2,same,32,0.2,0.001,32,balanced,0.5,0.6461538461538462,0.6034996050792879,0.6491228070175439,0.3394495412844037,0.4457831325301205,0.34615384615384615,0.417478354978355,0.5428571428571428,0.2159090909090909,0.3089430894308943

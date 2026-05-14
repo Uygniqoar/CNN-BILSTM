@@ -1,0 +1,46 @@
+C组模型实验结果回答
+
+1. 实验组：CNN-BiLSTM 最终交付模型
+使用特征：混合指标体系（行情指标 + 技术指标 + 情绪指标，合计 25 维）
+数值预测拟合度 (1-MAPE)：94.64%
+价格 RMSE：25.36
+价格 MAE：12.84
+收益率 RMSE：0.0695
+方向准确率：55.26%
+
+2. 对照组A：纯单向 LSTM 模型
+数值预测拟合度 (1-MAPE)：94.62%
+价格 RMSE：26.75
+价格 MAE：13.24
+收益率 RMSE：0.0708
+方向准确率：53.14%
+
+3. 对照组B：不含情绪特征的 CNN-BiLSTM（行情指标 + 技术指标）
+数值预测拟合度 (1-MAPE)：94.59%
+价格 RMSE：27.12
+价格 MAE：13.28
+收益率 RMSE：0.0717
+方向准确率：48.21%
+
+4. 模型超参数（基于网格搜索寻优）
+window = 5
+features = 25
+kernel_size = 5
+filters = 32
+lstm_units = 64
+epochs = 60，由 EarlyStopping 控制最佳轮数
+batch_size = 32
+dropout = 0.2
+optimizer = Adam (lr=0.001)
+
+5. 最终融合说明
+模型采用“统一回归架构”，底层直接预测 future_return_5（未来5日收益率），再利用公式“预测股价 = 当前股价 × (1 + 预测涨跌幅)”推导出预测股价。为保证结果严谨性，最终汇报指标均采用 3 个不同随机种子实验的均值。
+
+6. 已输出图表
+- loss_cnn_bilstm_final.png：最终交付模型单次最佳训练损失曲线。
+- loss_lstm_baseline.png：纯单向 LSTM 对照组训练损失曲线。
+- loss_cnn_bilstm_no_sentiment.png：不含情绪特征对照组训练损失曲线。
+- pred_price_vs_actual_cnn_bilstm.png：测试集全体股票日均预测股价 vs 实际股价走势对比图。
+- pred_return_vs_actual_cnn_bilstm.png：测试集全体股票日均预测收益率 vs 实际收益率对比图。
+- model_comparison_return.png：主要模型收益率及方向性能均值对比图（带误差棒）。
+- model_comparison_price.png：主要模型价格误差均值对比图（带误差棒）。

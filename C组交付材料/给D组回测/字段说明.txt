@@ -1,0 +1,23 @@
+本文件为 C 组 CNN-BiLSTM 模型预测结果，供 D 组回测使用。
+
+trade_date：当前决策日 t，可视为买入日。
+target_date：未来第 5 个交易日 t+5，可视为卖出或收益计算日。
+股票代码：股票代码。
+股票名称：股票名称。
+close_t：trade_date 当日收盘价。
+actual_close_t5：target_date 当日真实收盘价。
+actual_return_5：真实未来 5 日收益率，计算公式为 (actual_close_t5 - close_t) / close_t。
+pred_return_5：CNN-BiLSTM 模型预测的未来 5 日收益率。
+pred_close_t5：模型预测的未来第 5 日收盘价，计算公式为 close_t * (1 + pred_return_5)。
+actual_direction：真实涨跌方向，actual_return_5 > 0 为 1，否则为 0。
+pred_direction：预测涨跌方向，pred_return_5 > 0 为 1，否则为 0。
+rank_by_date：每个 trade_date 内，按照 pred_return_5 从高到低排名。
+split：样本所属集合，train、val 或 test。
+model_name：预测结果来源模型。
+
+D 组使用建议：
+1. 严格样本外回测使用 predictions_for_D_test.csv。
+2. 全样本策略展示使用 predictions_for_D_all.csv。
+3. 全样本选股策略可按每个 trade_date 选择 rank_by_date <= 10 的股票。
+4. 类均线策略可使用 pred_close_t5 > close_t 作为买入信号。
+5. actual_return_5 可用于计算真实收益。
