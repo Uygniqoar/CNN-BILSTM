@@ -1,2 +1,0 @@
-﻿model_name,filters,kernel_size,conv_layers,padding,lstm_units,dropout,learning_rate,batch_size,loss,val_rmse,val_mae,val_mape,val_direction_accuracy,test_rmse,test_mae,test_mape,test_direction_accuracy,is_better_than_lstm,is_better_than_no_sentiment
-cnn_bilstm_tuned,16,2,1,valid,16,0.1,0.001,32,mse,0.06769327843015521,0.054911915212869644,103.0524492263794,0.5807692307692308,0.07221646183083212,0.0535057857632637,100.47019720077515,0.5384615384615384,False,False
